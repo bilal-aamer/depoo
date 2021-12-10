@@ -1,8 +1,8 @@
 import 'dart:math';
 
-import 'package:assessment_task/Widget/customClipper.dart';
-import 'package:assessment_task/home_screen.dart';
-import 'package:assessment_task/login_screen.dart';
+import 'Widget/customClipper.dart';
+import 'package:app/home_screen.dart';
+import 'package:app/login_screen.dart';
 import 'package:flutter/material.dart';
 
 class SignUpScreen extends StatefulWidget {

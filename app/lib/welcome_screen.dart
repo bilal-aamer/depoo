@@ -1,5 +1,5 @@
-import 'package:assessment_task/login_screen.dart';
-import 'package:assessment_task/signup_screen.dart';
+import 'package:app/login_screen.dart';
+import 'package:app/signup_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 

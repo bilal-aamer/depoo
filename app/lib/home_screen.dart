@@ -1,5 +1,5 @@
-import 'package:assessment_task/welcome_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:app/welcome_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
