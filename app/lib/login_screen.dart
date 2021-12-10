@@ -32,7 +32,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Container(
                   height: MediaQuery.of(context).size.height * .5,
                   width: MediaQuery.of(context).size.width,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     gradient: LinearGradient(
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
@@ -47,7 +47,7 @@ class _LoginScreenState extends State<LoginScreen> {
             )),
           ),
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 40),
+            padding: const EdgeInsets.symmetric(horizontal: 40),
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -56,8 +56,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   SizedBox(height: height * .2),
                   RichText(
                     textAlign: TextAlign.center,
-                    text: TextSpan(
-                        text: 'Wiz',
+                    text: const TextSpan(
+                        text: 'Dep',
                         style: TextStyle(
                           fontSize: 30,
                           fontWeight: FontWeight.w700,
@@ -65,19 +65,19 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         children: [
                           TextSpan(
-                            text: 'pna',
+                            text: 'oo',
                             style: TextStyle(color: Colors.black, fontSize: 30),
                           ),
                         ]),
                   ),
-                  SizedBox(height: 50),
+                  const SizedBox(height: 50),
                   Column(
                     children: <Widget>[
                       Container(
-                        margin: EdgeInsets.symmetric(vertical: 10),
+                        margin: const EdgeInsets.symmetric(vertical: 10),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
+                          children: const <Widget>[
                             Text(
                               "Username",
                               style: TextStyle(
@@ -96,10 +96,10 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                       Container(
-                        margin: EdgeInsets.symmetric(vertical: 10),
+                        margin: const EdgeInsets.symmetric(vertical: 10),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
+                          children: const <Widget>[
                             Text(
                               "Password",
                               style: TextStyle(
@@ -119,46 +119,47 @@ class _LoginScreenState extends State<LoginScreen> {
                       )
                     ],
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   GestureDetector(
                     onTap: () => Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => HomeScreen(),
+                        builder: (context) => const HomeScreen(),
                       ),
                     ),
                     child: Container(
                       width: MediaQuery.of(context).size.width,
-                      padding: EdgeInsets.symmetric(vertical: 15),
+                      padding: const EdgeInsets.symmetric(vertical: 15),
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(5)),
+                        borderRadius:
+                            const BorderRadius.all(const Radius.circular(5)),
                         boxShadow: <BoxShadow>[
                           BoxShadow(
                               color: Colors.grey.shade200,
-                              offset: Offset(2, 4),
+                              offset: const Offset(2, 4),
                               blurRadius: 5,
                               spreadRadius: 2)
                         ],
-                        gradient: LinearGradient(
+                        gradient: const LinearGradient(
                           begin: Alignment.centerLeft,
                           end: Alignment.centerRight,
                           colors: [
-                            Color(0xff14279B),
+                            const Color(0xff14279B),
                             Color(0xff14279B),
                           ],
                         ),
                       ),
-                      child: Text(
+                      child: const Text(
                         'Login',
                         style: TextStyle(fontSize: 20, color: Colors.white),
                       ),
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.symmetric(vertical: 10),
+                    padding: const EdgeInsets.symmetric(vertical: 10),
                     alignment: Alignment.centerRight,
-                    child: Text('Forgot Password ?',
+                    child: const Text('Forgot Password ?',
                         style: TextStyle(
                             fontSize: 14, fontWeight: FontWeight.w500)),
                   ),
@@ -168,15 +169,15 @@ class _LoginScreenState extends State<LoginScreen> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => SignUpScreen()));
+                              builder: (context) => const SignUpScreen()));
                     },
                     child: Container(
-                      margin: EdgeInsets.symmetric(vertical: 20),
-                      padding: EdgeInsets.all(15),
+                      margin: const EdgeInsets.symmetric(vertical: 20),
+                      padding: const EdgeInsets.all(15),
                       alignment: Alignment.bottomCenter,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
+                        children: const <Widget>[
                           Text(
                             'Don\'t have an account ?',
                             style: TextStyle(
@@ -208,15 +209,16 @@ class _LoginScreenState extends State<LoginScreen> {
                 Navigator.pop(context);
               },
               child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 10),
+                padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: Row(
                   children: <Widget>[
                     Container(
-                      padding: EdgeInsets.only(left: 0, top: 10, bottom: 10),
-                      child:
-                          Icon(Icons.keyboard_arrow_left, color: Colors.black),
+                      padding:
+                          const EdgeInsets.only(left: 0, top: 10, bottom: 10),
+                      child: const Icon(Icons.keyboard_arrow_left,
+                          color: Colors.black),
                     ),
-                    Text('Back',
+                    const Text('Back',
                         style: TextStyle(
                             fontSize: 12, fontWeight: FontWeight.w500))
                   ],

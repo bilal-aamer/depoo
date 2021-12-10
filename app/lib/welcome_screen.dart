@@ -11,22 +11,22 @@ class WelcomeScreen extends StatelessWidget {
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 40),
+          padding: const EdgeInsets.symmetric(horizontal: 40),
           height: MediaQuery.of(context).size.height,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(5)),
+            borderRadius: const BorderRadius.all(Radius.circular(5)),
             boxShadow: <BoxShadow>[
               BoxShadow(
                   color: Colors.grey.shade200,
-                  offset: Offset(2, 4),
+                  offset: const Offset(2, 4),
                   blurRadius: 5,
                   spreadRadius: 2)
             ],
-            gradient: LinearGradient(
+            gradient: const LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
               colors: [
-                Color(0xffE6E6E6),
+                Colors.white,
                 Color(0xff14279B),
               ],
             ),
@@ -38,72 +38,76 @@ class WelcomeScreen extends StatelessWidget {
               RichText(
                 textAlign: TextAlign.center,
                 text: TextSpan(
-                  text: 'Wiz',
+                  text: 'Dep',
                   style: GoogleFonts.portLligatSans(
                     textStyle: Theme.of(context).textTheme.headline1,
                     fontSize: 30,
                     fontWeight: FontWeight.w700,
                     color: Colors.white,
                   ),
-                  children: [
+                  children: const [
                     TextSpan(
-                      text: 'pna',
+                      text: 'oo',
                       style: TextStyle(color: Colors.black, fontSize: 30),
                     ),
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 80,
               ),
               InkWell(
                 onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => LoginScreen()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const LoginScreen()));
                 },
                 child: Container(
                   width: MediaQuery.of(context).size.width,
-                  padding: EdgeInsets.symmetric(vertical: 13),
+                  padding: const EdgeInsets.symmetric(vertical: 13),
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(5)),
+                      borderRadius: const BorderRadius.all(Radius.circular(5)),
                       boxShadow: <BoxShadow>[
                         BoxShadow(
-                            color: Color(0xffE6E6E6).withAlpha(100),
-                            offset: Offset(2, 4),
+                            color: const Color(0xffE6E6E6).withAlpha(100),
+                            offset: const Offset(2, 4),
                             blurRadius: 8,
                             spreadRadius: 2)
                       ],
                       color: Colors.white),
-                  child: Text(
+                  child: const Text(
                     'Login',
                     style: TextStyle(fontSize: 20, color: Colors.black),
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               GestureDetector(
                 onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => SignUpScreen()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const SignUpScreen()));
                 },
                 child: Container(
                   width: MediaQuery.of(context).size.width,
-                  padding: EdgeInsets.symmetric(vertical: 13),
+                  padding: const EdgeInsets.symmetric(vertical: 13),
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(5)),
+                    borderRadius: const BorderRadius.all(Radius.circular(5)),
                     border: Border.all(color: Colors.white, width: 2),
                   ),
-                  child: Text(
+                  child: const Text(
                     'Register now',
                     style: TextStyle(fontSize: 20, color: Colors.white),
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
             ],
