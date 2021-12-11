@@ -1,7 +1,7 @@
 import 'package:app/login_screen.dart';
 import 'package:app/signup_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+// import 'package:google_fonts/google_fonts.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({Key? key}) : super(key: key);
@@ -26,8 +26,8 @@ class WelcomeScreen extends StatelessWidget {
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
               colors: [
+                Colors.blue,
                 Colors.white,
-                Color(0xff14279B),
               ],
             ),
           ),
@@ -37,20 +37,25 @@ class WelcomeScreen extends StatelessWidget {
             children: <Widget>[
               RichText(
                 textAlign: TextAlign.center,
+                // ignore: prefer_const_constructors
                 text: TextSpan(
-                  text: 'Dep',
-                  style: GoogleFonts.portLligatSans(
+                  text: 'Depoo',
+                  style: const TextStyle(
+                    fontSize: 40,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  /*GoogleFonts.portLligatSans(
                     textStyle: Theme.of(context).textTheme.headline1,
                     fontSize: 30,
                     fontWeight: FontWeight.w700,
                     color: Colors.white,
-                  ),
-                  children: const [
+                  ),*/
+                  /*children: const [
                     TextSpan(
                       text: 'oo',
                       style: TextStyle(color: Colors.black, fontSize: 30),
                     ),
-                  ],
+                  ],*/
                 ),
               ),
               const SizedBox(

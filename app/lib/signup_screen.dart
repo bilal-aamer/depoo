@@ -47,8 +47,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         begin: Alignment.topCenter,
                         end: Alignment.bottomCenter,
                         colors: [
-                          Color(0xffE6E6E6),
-                          Color(0xff14279B),
+                          Colors.white,
+                          Colors.blueAccent,
                         ],
                       ),
                     ),
@@ -71,7 +71,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         style: TextStyle(
                           fontSize: 30,
                           fontWeight: FontWeight.w700,
-                          color: Color(0xff14279B),
+                          color: Colors.blueAccent,
                         ),
                         children: [
                           TextSpan(
@@ -82,7 +82,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                     ),
                     const SizedBox(
-                      height: 50,
+                      height: 25,
                     ),
                     Column(
                       children: <Widget>[
@@ -97,7 +97,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     fontWeight: FontWeight.bold, fontSize: 15),
                               ),
                               SizedBox(
-                                height: 10,
+                                height: 5,
                               ),
                               TextField(
                                 obscureText: false,
@@ -121,7 +121,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     fontWeight: FontWeight.bold, fontSize: 15),
                               ),
                               SizedBox(
-                                height: 10,
+                                height: 5,
                               ),
                               TextField(
                                 keyboardType: TextInputType.phone,
@@ -146,7 +146,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     fontWeight: FontWeight.bold, fontSize: 15),
                               ),
                               SizedBox(
-                                height: 10,
+                                height: 5,
                               ),
                               TextField(
                                 keyboardType: TextInputType.emailAddress,
@@ -171,7 +171,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     fontWeight: FontWeight.bold, fontSize: 15),
                               ),
                               SizedBox(
-                                height: 10,
+                                height: 5,
                               ),
                               TextField(
                                 obscureText: true,
@@ -193,7 +193,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       onTap: () => Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const HomeScreen(),
+                          builder: (context) => HomeScreen(),
                         ),
                       ),
                       child: Container(
@@ -214,8 +214,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             begin: Alignment.centerLeft,
                             end: Alignment.centerRight,
                             colors: [
-                              Color(0xff14279B),
-                              Color(0xff14279B),
+                              Colors.blueAccent,
+                              Colors.blueAccent,
                             ],
                           ),
                         ),
@@ -225,7 +225,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ),
                       ),
                     ),
-                    SizedBox(height: height * .14),
+                    SizedBox(height: height * .055),
                     InkWell(
                       onTap: () {
                         Navigator.push(
@@ -251,7 +251,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             Text(
                               'Login',
                               style: TextStyle(
-                                  color: Color(0xff14279B),
+                                  color: Colors.blueAccent,
                                   fontSize: 13,
                                   fontWeight: FontWeight.w600),
                             ),
@@ -278,7 +278,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         padding:
                             const EdgeInsets.only(left: 0, top: 10, bottom: 10),
                         child: const Icon(Icons.keyboard_arrow_left,
-                            color: Colors.black),
+                            color: Colors.blueAccent),
                       ),
                       const Text('Back',
                           style: TextStyle(

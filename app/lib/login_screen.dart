@@ -37,8 +37,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
                       colors: [
-                        Color(0xffE6E6E6),
-                        Color(0xff14279B),
+                        Colors.white,
+                        Colors.blue,
                       ],
                     ),
                   ),
@@ -61,7 +61,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         style: TextStyle(
                           fontSize: 30,
                           fontWeight: FontWeight.w700,
-                          color: Color(0xff14279B),
+                          color: Colors.blue,
                         ),
                         children: [
                           TextSpan(
@@ -124,7 +124,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     onTap: () => Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const HomeScreen(),
+                        builder: (context) => HomeScreen(),
                       ),
                     ),
                     child: Container(
@@ -133,7 +133,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
                         borderRadius:
-                            const BorderRadius.all(const Radius.circular(5)),
+                            const BorderRadius.all(Radius.circular(5)),
                         boxShadow: <BoxShadow>[
                           BoxShadow(
                               color: Colors.grey.shade200,
@@ -145,8 +145,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           begin: Alignment.centerLeft,
                           end: Alignment.centerRight,
                           colors: [
-                            const Color(0xff14279B),
-                            Color(0xff14279B),
+                            Colors.blue,
+                            Colors.blue,
                           ],
                         ),
                       ),
@@ -189,7 +189,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           Text(
                             'Register',
                             style: TextStyle(
-                                color: Color(0xff14279B),
+                                color: Colors.blue,
                                 fontSize: 13,
                                 fontWeight: FontWeight.w600),
                           ),
@@ -216,7 +216,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       padding:
                           const EdgeInsets.only(left: 0, top: 10, bottom: 10),
                       child: const Icon(Icons.keyboard_arrow_left,
-                          color: Colors.black),
+                          color: Colors.blue),
                     ),
                     const Text('Back',
                         style: TextStyle(
