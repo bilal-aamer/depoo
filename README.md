@@ -1,7 +1,8 @@
 ## Prerequisites
-    * Node.js
-    * Flutter
-    * Vscode
+
+   * Node.js
+   * Flutter
+   * Vscode
 
 ## Installation
 * #### Backend
