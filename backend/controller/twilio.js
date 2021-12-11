@@ -7,9 +7,7 @@ const client = new twilio(accId,authToken);
 
 const notifyUsers = async(req,res,next) => {
     
-    const { message,phoneNumber } = req.body;
-
-    console.log("Message is " + message);    
+    const { message,phoneNumber } = req.body; 
 
     try{
 
