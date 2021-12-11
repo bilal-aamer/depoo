@@ -1,3 +1,8 @@
+## Prerequisites
+    * Node.js
+    * Flutter
+    * Vscode
+
 ## Installation
 * #### Backend
     Download the required dependencies using -
