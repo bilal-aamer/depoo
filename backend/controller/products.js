@@ -2,7 +2,7 @@ const sampleSrc = "https://cdn.pixabay.com/photo/2016/11/18/13/47/apple-1834639_
 
 const sampleProducts = 
     [
-        {name:"Nike Jordan Shoes",src:"https://cdn-images.farfetch-contents.com/14/43/69/43/14436943_21290505_600.jpg,price:300",price:34000,_id:0},
+        {name:"Nike Jordan Shoes",src:"https://cdn-images.farfetch-contents.com/14/43/69/43/14436943_21290505_600.jpg",price:34000,_id:0},
         {name:"Apple Iphone 13",src:"https://cdn.pixabay.com/photo/2021/09/25/17/43/iphone-13-6655518__480.jpg",price:120000,_id:1},
         {name:"Google Pixel 4",src:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_BhvFbZoIUvxuCm2SpqMUURmzw5iLJShU2rwnYrNITfh6oAkbNCC6NYc&s=10",price:15000,_id:2},
         {name:"Samsung Galaxy Fold 3",src:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEtm6GlY0A2T-b7BURgAEjohWz4lfmvT_8eUz5WpMPyWZ0e8SS&s",price:90000,_id:3},
