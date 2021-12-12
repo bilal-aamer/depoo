@@ -18,7 +18,7 @@ const getAllProducts = (req,res,next) => {
     res.status(200).json(sampleProducts);
 }
 
-module.exports = { getAllProducts };
+module.exports = { getAllProducts,sampleProducts };
 
 
 /*
