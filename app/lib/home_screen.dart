@@ -6,25 +6,6 @@ import 'package:Depoo/services.dart';
 import 'package:flutter/material.dart';
 
 import 'package:http/http.dart' as http;
-// import 'package:twilio_flutter/twilio_flutter.dart';
-
-// class start
-
-class ProductData {
-  final String name, id, price, src;
-
-  ProductData(this.name, this.id, this.price, this.src);
-
-  /*factory ProductData.fromJson(Map<String, dynamic> json) {
-    return ProductData(
-        name: json['name'],
-        id: json['id'],
-        price: json['price'],
-        src: json['src']);
-  }*/
-}
-
-// class end
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -34,82 +15,15 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final _saved = <ProductData>[];
-  //var data = [];
+  late Future<List<ProductData>> data;
 
-  // START
-
-  Future getData() async {
-    //print("In");
-    var response = await http
-        .get(Uri.parse("http://localhost:3000/products/getAllProducts"));
-
-    var jsonData = jsonDecode(response.body);
-
-    List<ProductData> productData = [];
-
-    for (var u in jsonData) {
-      ProductData dataa = ProductData(u['name'], u['id'], u['price'], u['src']);
-      productData.add(dataa);
-    }
-    //print("Out");
-    print(productData);
-
-    return productData;
+  @override
+  void initState() {
+    super.initState();
+    data = fetchProductData();
   }
 
-  // END
-
-  List<ProductData> data = [
-    ProductData("Dwain", "0", "99",
-        "https://cdn-images.farfetch-contents.com/14/43/69/43/14436943_21290505_600.jpg"),
-    ProductData("Pearline", "1", "99",
-        "http://dummyimage.com/210x100.png/dddddd/000000"),
-    ProductData(
-        "Delora", "2", "99", "http://dummyimage.com/210x100.png/dddddd/000000"),
-    ProductData("Kendricks", "3", "99",
-        "http://dummyimage.com/210x100.png/dddddd/000000"),
-    ProductData(
-        "Elsi", "4", "99", "http://dummyimage.com/210x100.png/dddddd/000000"),
-    ProductData(
-        "Laurel", "5", "99", "http://dummyimage.com/210x100.png/dddddd/000000"),
-    ProductData(
-        "Robyn", "6", "99", "http://dummyimage.com/210x100.png/dddddd/000000"),
-    ProductData(
-        "Lelia", "7", "99", "http://dummyimage.com/210x100.png/dddddd/000000"),
-    ProductData(
-        "Faith", "8", "99", "http://dummyimage.com/210x100.png/dddddd/000000"),
-    ProductData("Miquela", "9", "99",
-        "http://dummyimage.com/210x100.png/dddddd/000000"),
-    ProductData("Enrique", "10", "99",
-        "http://dummyimage.com/210x100.png/dddddd/000000"),
-  ];
-
-  /*Widget _buildRow(ProductData pair) {
-    final alreadySaved = _saved.contains(pair);
-    ListView.builder(
-        itemCount: data.length,
-        itemBuilder: (context, index) {
-          return Padding(
-            padding: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 4.0),
-            child: Card(
-              child: ListTile(
-                onTap: () {},
-                /*trailing: Icon(
-                    alreadySaved ? Icons.favorite : Icons.favorite_border,
-                    color: alreadySaved ? Colors.red : null,
-                  ),*/
-                title: Text(data[index].name),
-                subtitle: Text(data[index].price.toString()),
-                leading: CircleAvatar(
-                  backgroundImage: NetworkImage(data[index].src),
-                  backgroundColor: Colors.transparent,
-                ),
-              ),
-            ),
-          );
-        });
-  }*/
+  Set<int> fav = {};
 
   @override
   Widget build(BuildContext context) {
@@ -140,49 +54,60 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
-      body: ListView.builder(
-          itemCount: data.length,
-          itemBuilder: (context, index) {
-            return Padding(
-              padding:
-                  const EdgeInsets.symmetric(vertical: 1.0, horizontal: 4.0),
-              child: Card(
-                child: ListTile(
-                  onTap: () {},
-                  trailing: IconButton(
-                    icon: const Icon(Icons.favorite_border),
-                    onPressed: () {},
-                  ),
-                  title: Text(data[index].name),
-                  subtitle: Text(data[index].price.toString()),
-                  leading: CircleAvatar(
-                    backgroundImage: NetworkImage(data[index].src),
-                    backgroundColor: Colors.transparent,
-                  ),
-                ),
-              ),
-            );
-          }),
-      /* Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Container(
-          height: MediaQuery.of(context).size.height * .5,
-          width: MediaQuery.of(context).size.width,
-          margin: const EdgeInsets.all(10.0),
-          child: GridView.count(
-            scrollDirection: Axis.horizontal,
-            crossAxisCount: 3,
-            children: List.generate(100, (index) {
-              return Center(
-                child: Text(
-                  'Item $index',
-                  style: Theme.of(context).textTheme.headline5,
-                ),
-              );
-            }),
-          ),
-        ),
-      ),*/
+      body: FutureBuilder<List<ProductData>>(
+        future: data,
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return ListView.builder(
+                itemCount: snapshot.data!.length,
+                itemBuilder: (context, index) {
+                  bool isFav = false;
+                  Color color = Colors.grey;
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 1.0, horizontal: 4.0),
+                    child: Card(
+                      child: ListTile(
+                        onTap: () {
+                          // To call Function
+                        },
+                        trailing: IconButton(
+                          icon: Icon(
+                            Icons.favorite_border,
+                            color: color,
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              isFav = !isFav;
+                              if (isFav) {
+                                color = Colors.red;
+                                fav.add(snapshot.data![index].id);
+                              } else {
+                                fav.remove(snapshot.data![index].id);
+                                color = Colors.black;
+                              }
+                            });
+                          },
+                        ),
+                        title: Text(snapshot.data![index].name),
+                        subtitle: Text(snapshot.data![index].price.toString()),
+                        leading: CircleAvatar(
+                          backgroundImage:
+                              NetworkImage(snapshot.data![index].src),
+                          backgroundColor: Colors.transparent,
+                        ),
+                      ),
+                    ),
+                  );
+                });
+          } else if (snapshot.hasError) {
+            return Text('${snapshot.error}');
+          }
+
+          // By default, show a loading spinner.
+          return const CircularProgressIndicator();
+        },
+      ),
       bottomNavigationBar: new Container(
         color: Colors.blueAccent,
         height: 50.0,
@@ -217,3 +142,58 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
+/*List<ProductData> data = [
+    ProductData("Nike Jordan Shoes", "0", "145",
+        "https://cdn-images.farfetch-contents.com/14/43/69/43/14436943_21290505_600.jpg"),
+    ProductData("Apple iphone 13", "1", "100",
+        "https://cdn.pixabay.com/photo/2021/09/25/17/43/iphone-13-6655518__480.jpg"),
+    ProductData("Samsung Galaxy fold 3", "2", "1150",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEtm6GlY0A2T-b7BURgAEjohWz4lfmvT_8eUz5WpMPyWZ0e8SS&s"),
+    ProductData("Google pixel 4", "3", "950",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_BhvFbZoIUvxuCm2SpqMUURmzw5iLJShU2rwnYrNITfh6oAkbNCC6NYc&s=10"),
+    ProductData("G-Shock watch", "4", "200",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcp5BQpu43bx1g65jMKQreV7p01rfowA52PA&usqp=CAU"),
+    ProductData("Fit bit z2", "5", "32.5",
+        "https://image.shutterstock.com/image-photo/fitness-bracelet-isolated-on-white-260nw-1262029681.jpg"),
+    ProductData("LG Fridge", "6", "65.99",
+        "https://i.gadgets360cdn.com/products/single-door-refrigerator-190-l-gl-d201ascy-large-96292-166689-1595845600-1.jpeg?downsize=*:180"),
+    ProductData("Sony TV", "7", "54.8",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuL4RjofevEyRn7huHL4WsLkj7OF7GLEJ39w&usqp=CAU"),
+    ProductData("Omen Laptop", "8", "1050",
+        "https://www.omen.com/content/dam/sites/omen/worldwide/laptops/starmade-and-valkyrie/Valkyrie_15_80w_NonNumpad_4-Zone_MicaSilver_nonODD_nonFPR_CoreSet_RearLeft_640x440.png"),
+    ProductData("JBL Headphones", "9", "250",
+        "https://in.jbl.com/dw/image/v2/AAUJ_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dwae2159f2/JBL_TUNE700BT_ProductImage_Hero_Blue02.png?sw=537&sfrm=png"),
+  ];*/
+
+
+  /* Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Container(
+          height: MediaQuery.of(context).size.height * .5,
+          width: MediaQuery.of(context).size.width,
+          margin: const EdgeInsets.all(10.0),
+          child: GridView.count(
+            scrollDirection: Axis.horizontal,
+            crossAxisCount: 3,
+            children: List.generate(100, (index) {
+              return Center(
+                child: Text(
+                  'Item $index',
+                  style: Theme.of(context).textTheme.headline5,
+                ),
+              );
+            }),
+          ),
+        ),
+      ),*/
+
+  
+  /*factory ProductData.fromJson(Map<String, dynamic> json) {
+    return ProductData(
+        name: json['name'],
+        id: json['id'],
+        price: json['price'],
+        src: json['src']);
+  }*/
+
+

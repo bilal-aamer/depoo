@@ -1,23 +1,32 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 
-Future<List> fetchProductData(var data) async {
-  const url = "http://localhost:3000/products/getAllProducts";
+Future<List<ProductData>> fetchProductData() async {
+  const url = "http://192.168.1.4:3000/products/getAllProducts";
 
   final response = await get(Uri.parse(url));
 
-  final jsonData = jsonDecode(response.body) as List;
+  //List myModels = (json.decode(response.body) as List);
+  //.map((i) => ProductData.fromJson(i))
+  //.toList();
 
-  return jsonData;
+  final jsonData = jsonDecode(response.body).cast<Map<String, dynamic>>();
+  //print(myModels);
+  //print(response.body);
+  print(jsonData);
+  //final List<ProductData> list = [ProductData.fromJson(jsonData)];
+  //print(list);
+  return jsonData
+      .map<ProductData>((json) => ProductData.fromJson(json))
+      .toList();
 }
 
 class ProductData {
   final String name;
-  final String id;
-  final String price;
+  final int id;
+  final int price;
   final String src;
 
   ProductData(
@@ -28,10 +37,10 @@ class ProductData {
 
   factory ProductData.fromJson(Map<String, dynamic> json) {
     return ProductData(
-        name: json['name'],
-        id: json['id'],
-        price: json['price'],
-        src: json['src']);
+        name: json['name'] as String,
+        id: json['_id'] as int,
+        price: json['price'] as int,
+        src: json['src'] as String);
   }
 }
 /*
