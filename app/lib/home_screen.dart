@@ -1,6 +1,6 @@
 // ignore_for_file: unnecessary_new
-
-import 'package:app/about_screen.dart';
+import 'package:Depoo/about_screen.dart';
+import 'package:Depoo/services.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -11,29 +11,57 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  List<ProductData> data = [
+    ProductData(name: "Apple", id: 0, price: 999.0, src: "assets/apple.png"),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        leading: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: const Icon(Icons.exit_to_app)),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        backgroundColor: Colors.blue,
-        centerTitle: true,
-        elevation: 1.0,
-        // ignore: prefer_const_constructors
-        title: SizedBox(
-            height: 35.0,
-            child: const Text(
-              "Depoo",
-              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-            )),
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(80.0), // here the desired height
+        child: AppBar(
+          automaticallyImplyLeading: false,
+          leading: IconButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: const Icon(Icons.exit_to_app)),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+          backgroundColor: Colors.blue,
+          centerTitle: true,
+          elevation: 1.0,
+          // ignore: prefer_const_constructors
+          title: Padding(
+            padding: const EdgeInsets.only(top: 10.0),
+            child: const SizedBox(
+                height: 50.0,
+                child: Text(
+                  "Depoo",
+                  style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
+                )),
+          ),
+        ),
       ),
-      body: Padding(
+      body: ListView.builder(
+          itemCount: data.length,
+          itemBuilder: (context, index) {
+            return Padding(
+              padding:
+                  const EdgeInsets.symmetric(vertical: 1.0, horizontal: 4.0),
+              child: Card(
+                child: ListTile(
+                  onTap: () {},
+                  title: Text(data[index].name),
+                  leading: CircleAvatar(
+                    backgroundImage: AssetImage('assets/${data[index].src}'),
+                  ),
+                ),
+              ),
+            );
+          }),
+      /* Padding(
         padding: const EdgeInsets.all(8.0),
         child: Container(
           height: MediaQuery.of(context).size.height * .5,
@@ -52,7 +80,7 @@ class _HomeScreenState extends State<HomeScreen> {
             }),
           ),
         ),
-      ),
+      ),*/
       bottomNavigationBar: new Container(
         color: Colors.blueAccent,
         height: 50.0,
@@ -75,7 +103,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => (AboutScreen())),
+                    MaterialPageRoute(
+                        builder: (context) => (const AboutScreen())),
                   );
                 },
               ),
