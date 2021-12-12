@@ -9,6 +9,7 @@ const MessagingResponse = twilio.twiml.MessagingResponse;
 const notifyUsers = async(req,res,next) => {
     
     const { message,phoneNumber } = req.body; 
+    console.log(message);
 
     try{
 

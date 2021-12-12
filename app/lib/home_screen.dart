@@ -35,8 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
           actions: <Widget>[
             IconButton(
                 onPressed: () {
-                  //createProductData("+919989900301", "This is a Test!");
-                  print(fav);
+                  createProductData("+919989900301", fav.toString());
                 },
                 icon: const Icon(Icons.add))
           ],
