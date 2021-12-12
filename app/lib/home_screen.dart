@@ -1,7 +1,29 @@
 // ignore_for_file: unnecessary_new
+import 'dart:convert';
+
 import 'package:Depoo/about_screen.dart';
 import 'package:Depoo/services.dart';
 import 'package:flutter/material.dart';
+
+import 'package:http/http.dart' as http;
+
+// class start
+
+class ProductData {
+  final String name, id, price, src;
+
+  ProductData(this.name, this.id, this.price, this.src);
+
+  /*factory ProductData.fromJson(Map<String, dynamic> json) {
+    return ProductData(
+        name: json['name'],
+        id: json['id'],
+        price: json['price'],
+        src: json['src']);
+  }*/
+}
+
+// class end
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -11,7 +33,55 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  var data = [];
+  //var data = [];
+
+  // START
+
+  Future getData() async {
+    print("In");
+    var response = await http
+        .get(Uri.parse("http://localhost:3000/products/getAllProducts"));
+
+    var jsonData = jsonDecode(response.body);
+
+    List<ProductData> productData = [];
+
+    for (var u in jsonData) {
+      ProductData dataa = ProductData(u['name'], u['id'], u['price'], u['src']);
+      productData.add(dataa);
+    }
+    print("Out");
+    print(productData);
+
+    return productData;
+  }
+
+  // END
+
+  List<ProductData> data = [
+    ProductData(
+        "Dwain", "0", "99", "http://dummyimage.com/210x100.png/dddddd/000000"),
+    ProductData("Pearline", "1", "99",
+        "http://dummyimage.com/210x100.png/dddddd/000000"),
+    ProductData(
+        "Delora", "2", "99", "http://dummyimage.com/210x100.png/dddddd/000000"),
+    ProductData("Kendricks", "3", "99",
+        "http://dummyimage.com/210x100.png/dddddd/000000"),
+    ProductData(
+        "Elsi", "4", "99", "http://dummyimage.com/210x100.png/dddddd/000000"),
+    ProductData(
+        "Laurel", "5", "99", "http://dummyimage.com/210x100.png/dddddd/000000"),
+    ProductData(
+        "Robyn", "6", "99", "http://dummyimage.com/210x100.png/dddddd/000000"),
+    ProductData(
+        "Lelia", "7", "99", "http://dummyimage.com/210x100.png/dddddd/000000"),
+    ProductData(
+        "Faith", "8", "99", "http://dummyimage.com/210x100.png/dddddd/000000"),
+    ProductData("Miquela", "9", "99",
+        "http://dummyimage.com/210x100.png/dddddd/000000"),
+    ProductData("Enrique", "10", "99",
+        "http://dummyimage.com/210x100.png/dddddd/000000"),
+  ];
 
   /*List<ProductData> data = [
     ProductData(
@@ -70,22 +140,28 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       body: ListView.builder(
-          itemCount: 4, //data.length,
+          itemCount: data.length,
           itemBuilder: (context, index) {
             return Padding(
               padding:
                   const EdgeInsets.symmetric(vertical: 1.0, horizontal: 4.0),
               child: Card(
                 child: ListTile(
-                  onTap: () async {
-                    print('hello');
-                    print(await fetchProductData(data));
+                  onTap: () {
+                    //getData();
+                    //print('hello');
+                    //print(await fetchProductData(data));
                     //print(data);
                     // print('object');
                   },
-                  title: Text("Text"), //Text(data[index].name),
-                  subtitle: Text("Text"), //Text(data[index].price.toString()),
-                  leading: const CircleAvatar(
+                  /*trailing: Icon(
+                    alreadySaved ? Icons.favorite : Icons.favorite_border,
+                    color: alreadySaved ? Colors.red : null,
+                  ),*/
+                  title: Text(data[index].name),
+                  subtitle: Text(data[index].price.toString()),
+                  leading: CircleAvatar(
+                    backgroundImage: NetworkImage(data[index].src),
                     backgroundColor: Colors.white,
                   ),
                 ),
