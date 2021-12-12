@@ -2,27 +2,22 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
+import 'package:http/http.dart';
 
-Future<ProductData> fetchProductData() async {
-  final response = await http
-      .get(Uri.parse('https://jsonplaceholder.typicode.com/albums/1'));
+Future<List> fetchProductData(var data) async {
+  const url = "http://localhost:3000/products/getAllProducts";
 
-  if (response.statusCode == 200) {
-    // If the server did return a 200 OK response,
-    // then parse the JSON.
-    return ProductData.fromJson(jsonDecode(response.body));
-  } else {
-    // If the server did not return a 200 OK response,
-    // then throw an exception.
-    throw Exception('Failed to load album');
-  }
+  final response = await get(Uri.parse(url));
+
+  final jsonData = jsonDecode(response.body) as List;
+
+  return jsonData;
 }
 
 class ProductData {
   final String name;
-  final int id;
-  final double price;
+  final String id;
+  final String price;
   final String src;
 
   ProductData(
@@ -39,7 +34,7 @@ class ProductData {
         src: json['src']);
   }
 }
-
+/*
 void main() => runApp(const MyApp());
 
 class MyApp extends StatefulWidget {
@@ -50,7 +45,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  late Future<ProductData> futureProductData;
+  late Future<List<ProductData>> futureProductData;
 
   @override
   void initState() {
@@ -87,4 +82,4 @@ class _MyAppState extends State<MyApp> {
       ),
     );
   }
-}
+}*/

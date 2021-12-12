@@ -11,9 +11,34 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  List<ProductData> data = [
-    ProductData(name: "Apple", id: 0, price: 999.0, src: "assets/apple.png"),
-  ];
+  var data = [];
+
+  /*List<ProductData> data = [
+    ProductData(
+        name: "Apple",
+        id: 0,
+        price: 300.0,
+        src:
+            "https://cdn.pixabay.com/photo/2016/11/18/13/47/apple-1834639_960_720.jpg"),
+    ProductData(
+        name: "Banana",
+        id: 1,
+        price: 100.0,
+        src:
+            "https://cdn.pixabay.com/photo/2016/11/18/13/47/apple-1834639_960_720.jpg"),
+    ProductData(
+        name: "Carrot",
+        id: 2,
+        price: 50.0,
+        src:
+            "https://cdn.pixabay.com/photo/2016/11/18/13/47/apple-1834639_960_720.jpg"),
+    ProductData(
+        name: "Dragon Fruit",
+        id: 3,
+        price: 999.0,
+        src:
+            "https://cdn.pixabay.com/photo/2016/11/18/13/47/apple-1834639_960_720.jpg"),
+  ];*/
 
   @override
   Widget build(BuildContext context) {
@@ -45,17 +70,23 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       body: ListView.builder(
-          itemCount: data.length,
+          itemCount: 4, //data.length,
           itemBuilder: (context, index) {
             return Padding(
               padding:
                   const EdgeInsets.symmetric(vertical: 1.0, horizontal: 4.0),
               child: Card(
                 child: ListTile(
-                  onTap: () {},
-                  title: Text(data[index].name),
-                  leading: CircleAvatar(
-                    backgroundImage: AssetImage('assets/${data[index].src}'),
+                  onTap: () async {
+                    print('hello');
+                    print(await fetchProductData(data));
+                    //print(data);
+                    // print('object');
+                  },
+                  title: Text("Text"), //Text(data[index].name),
+                  subtitle: Text("Text"), //Text(data[index].price.toString()),
+                  leading: const CircleAvatar(
+                    backgroundColor: Colors.white,
                   ),
                 ),
               ),

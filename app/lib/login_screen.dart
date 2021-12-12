@@ -79,7 +79,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: const <Widget>[
                             Text(
-                              "Username",
+                              "Phone No.",
                               style: TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 15),
                             ),
@@ -87,6 +87,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               height: 10,
                             ),
                             TextField(
+                                keyboardType: TextInputType.phone,
                                 obscureText: false,
                                 decoration: InputDecoration(
                                     border: InputBorder.none,
@@ -95,7 +96,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ],
                         ),
                       ),
-                      Container(
+                      /*Container(
                         margin: const EdgeInsets.symmetric(vertical: 10),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -116,7 +117,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     filled: true))
                           ],
                         ),
-                      )
+                      )*/
                     ],
                   ),
                   const SizedBox(height: 20),
@@ -156,13 +157,13 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                   ),
-                  Container(
+                  /*Container(
                     padding: const EdgeInsets.symmetric(vertical: 10),
                     alignment: Alignment.centerRight,
                     child: const Text('Forgot Password ?',
                         style: TextStyle(
                             fontSize: 14, fontWeight: FontWeight.w500)),
-                  ),
+                  ),*/
                   SizedBox(height: height * .055),
                   InkWell(
                     onTap: () {
