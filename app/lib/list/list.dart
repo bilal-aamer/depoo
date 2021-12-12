@@ -41,3 +41,9 @@ class MyApp extends StatelessWidget {
     );  
   }  
 }  
+Map body = new HashMap<String,String>();
+body.putIfAbsent("phoneNumber", () => '20');
+body.putIfAbsent("message",() => 'hi bbbb');
+ return http.post('http://localhost:3000/twilio/notifyUsers', body: body).then((http.Response response){
+   print(helocnsoocn);
+ }

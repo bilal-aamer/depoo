@@ -60,27 +60,26 @@ class _HomeScreenState extends State<HomeScreen> {
 
   List<ProductData> data = [
     ProductData(
-        "Dwain", "0", "99", "http://dummyimage.com/210x100.png/dddddd/000000"),
-    ProductData("Pearline", "1", "99",
-        "http://dummyimage.com/210x100.png/dddddd/000000"),
+        "Nike Jordan Shoes", "0", "$145", "https://cdn-images.farfetch-contents.com/14/43/69/43/14436943_21290505_600.jpg"),
+    ProductData("Apple iphone 13", "1", "$100",
+        "https://cdn.pixabay.com/photo/2021/09/25/17/43/iphone-13-6655518__480.jpg"),
     ProductData(
-        "Delora", "2", "99", "http://dummyimage.com/210x100.png/dddddd/000000"),
-    ProductData("Kendricks", "3", "99",
-        "http://dummyimage.com/210x100.png/dddddd/000000"),
+        "Samsung Galaxy fold 3", "2", "$1150", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEtm6GlY0A2T-b7BURgAEjohWz4lfmvT_8eUz5WpMPyWZ0e8SS&s"),
+    ProductData("Google pixel 4", "3", "$950",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_BhvFbZoIUvxuCm2SpqMUURmzw5iLJShU2rwnYrNITfh6oAkbNCC6NYc&s=10"),
     ProductData(
-        "Elsi", "4", "99", "http://dummyimage.com/210x100.png/dddddd/000000"),
+        "G-Shock watch", "4", "$200", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcp5BQpu43bx1g65jMKQreV7p01rfowA52PA&usqp=CAU"),
     ProductData(
-        "Laurel", "5", "99", "http://dummyimage.com/210x100.png/dddddd/000000"),
+        "Fit bit z2", "5", "$32.5", "https://image.shutterstock.com/image-photo/fitness-bracelet-isolated-on-white-260nw-1262029681.jpg"),
     ProductData(
-        "Robyn", "6", "99", "http://dummyimage.com/210x100.png/dddddd/000000"),
+        "LG Fridge", "6", "$65.99", "https://i.gadgets360cdn.com/products/single-door-refrigerator-190-l-gl-d201ascy-large-96292-166689-1595845600-1.jpeg?downsize=*:180"),
     ProductData(
-        "Lelia", "7", "99", "http://dummyimage.com/210x100.png/dddddd/000000"),
+        "Sony TV", "7", "$54.8", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuL4RjofevEyRn7huHL4WsLkj7OF7GLEJ39w&usqp=CAU"),
     ProductData(
-        "Faith", "8", "99", "http://dummyimage.com/210x100.png/dddddd/000000"),
-    ProductData("Miquela", "9", "99",
-        "http://dummyimage.com/210x100.png/dddddd/000000"),
-    ProductData("Enrique", "10", "99",
-        "http://dummyimage.com/210x100.png/dddddd/000000"),
+        "Omen Laptop", "8", "$1050", "https://www.omen.com/content/dam/sites/omen/worldwide/laptops/starmade-and-valkyrie/Valkyrie_15_80w_NonNumpad_4-Zone_MicaSilver_nonODD_nonFPR_CoreSet_RearLeft_640x440.png"),
+    ProductData("JBL Headphones", "9", "$250",
+        "https://in.jbl.com/dw/image/v2/AAUJ_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dwae2159f2/JBL_TUNE700BT_ProductImage_Hero_Blue02.png?sw=537&sfrm=png"),
+
   ];
 
   /*List<ProductData> data = [
