@@ -6,6 +6,7 @@ import 'package:Depoo/services.dart';
 import 'package:flutter/material.dart';
 
 import 'package:http/http.dart' as http;
+// import 'package:twilio_flutter/twilio_flutter.dart';
 
 // class start
 
@@ -33,12 +34,13 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final _saved = <ProductData>[];
   //var data = [];
 
   // START
 
   Future getData() async {
-    print("In");
+    //print("In");
     var response = await http
         .get(Uri.parse("http://localhost:3000/products/getAllProducts"));
 
@@ -50,7 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ProductData dataa = ProductData(u['name'], u['id'], u['price'], u['src']);
       productData.add(dataa);
     }
-    print("Out");
+    //print("Out");
     print(productData);
 
     return productData;
@@ -59,8 +61,8 @@ class _HomeScreenState extends State<HomeScreen> {
   // END
 
   List<ProductData> data = [
-    ProductData(
-        "Dwain", "0", "99", "http://dummyimage.com/210x100.png/dddddd/000000"),
+    ProductData("Dwain", "0", "99",
+        "https://cdn-images.farfetch-contents.com/14/43/69/43/14436943_21290505_600.jpg"),
     ProductData("Pearline", "1", "99",
         "http://dummyimage.com/210x100.png/dddddd/000000"),
     ProductData(
@@ -83,32 +85,31 @@ class _HomeScreenState extends State<HomeScreen> {
         "http://dummyimage.com/210x100.png/dddddd/000000"),
   ];
 
-  /*List<ProductData> data = [
-    ProductData(
-        name: "Apple",
-        id: 0,
-        price: 300.0,
-        src:
-            "https://cdn.pixabay.com/photo/2016/11/18/13/47/apple-1834639_960_720.jpg"),
-    ProductData(
-        name: "Banana",
-        id: 1,
-        price: 100.0,
-        src:
-            "https://cdn.pixabay.com/photo/2016/11/18/13/47/apple-1834639_960_720.jpg"),
-    ProductData(
-        name: "Carrot",
-        id: 2,
-        price: 50.0,
-        src:
-            "https://cdn.pixabay.com/photo/2016/11/18/13/47/apple-1834639_960_720.jpg"),
-    ProductData(
-        name: "Dragon Fruit",
-        id: 3,
-        price: 999.0,
-        src:
-            "https://cdn.pixabay.com/photo/2016/11/18/13/47/apple-1834639_960_720.jpg"),
-  ];*/
+  /*Widget _buildRow(ProductData pair) {
+    final alreadySaved = _saved.contains(pair);
+    ListView.builder(
+        itemCount: data.length,
+        itemBuilder: (context, index) {
+          return Padding(
+            padding: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 4.0),
+            child: Card(
+              child: ListTile(
+                onTap: () {},
+                /*trailing: Icon(
+                    alreadySaved ? Icons.favorite : Icons.favorite_border,
+                    color: alreadySaved ? Colors.red : null,
+                  ),*/
+                title: Text(data[index].name),
+                subtitle: Text(data[index].price.toString()),
+                leading: CircleAvatar(
+                  backgroundImage: NetworkImage(data[index].src),
+                  backgroundColor: Colors.transparent,
+                ),
+              ),
+            ),
+          );
+        });
+  }*/
 
   @override
   Widget build(BuildContext context) {
@@ -147,22 +148,16 @@ class _HomeScreenState extends State<HomeScreen> {
                   const EdgeInsets.symmetric(vertical: 1.0, horizontal: 4.0),
               child: Card(
                 child: ListTile(
-                  onTap: () {
-                    //getData();
-                    //print('hello');
-                    //print(await fetchProductData(data));
-                    //print(data);
-                    // print('object');
-                  },
-                  /*trailing: Icon(
-                    alreadySaved ? Icons.favorite : Icons.favorite_border,
-                    color: alreadySaved ? Colors.red : null,
-                  ),*/
+                  onTap: () {},
+                  trailing: IconButton(
+                    icon: const Icon(Icons.favorite_border),
+                    onPressed: () {},
+                  ),
                   title: Text(data[index].name),
                   subtitle: Text(data[index].price.toString()),
                   leading: CircleAvatar(
                     backgroundImage: NetworkImage(data[index].src),
-                    backgroundColor: Colors.white,
+                    backgroundColor: Colors.transparent,
                   ),
                 ),
               ),
