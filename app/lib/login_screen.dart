@@ -13,7 +13,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final TextEditingController myController = TextEditingController();
+  TextEditingController myController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -79,20 +79,20 @@ class _LoginScreenState extends State<LoginScreen> {
                         margin: const EdgeInsets.symmetric(vertical: 10),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          children: const <Widget>[
-                            Text(
+                          children: <Widget>[
+                            const Text(
                               "Phone No.",
                               style: TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 15),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             TextField(
-                                // COntroller
+                                controller: myController,
                                 keyboardType: TextInputType.phone,
                                 obscureText: false,
-                                decoration: InputDecoration(
+                                decoration: const InputDecoration(
                                     border: InputBorder.none,
                                     fillColor: Color(0xfff3f3f4),
                                     filled: true))
